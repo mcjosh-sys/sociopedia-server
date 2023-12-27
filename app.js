@@ -30,7 +30,7 @@ app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use("/meida", express.static(path.join(__dirname, "public/media")));
 
 /* Mongoose Setup */
 const PORT = process.env.PORT || 6001;
