@@ -1,9 +1,6 @@
 import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
@@ -32,10 +29,11 @@ app.use(morgan("combined", { stream: accessLogStream }));
 app.use(cors());
 app.use("/meida", express.static(path.join(__dirname, "public/media")));
 
-/* Mongoose Setup */
-
 
 /* Routes */
+app
+  .route("/")
+  .get((req, res) => res.status(200).json({ success: "Server is up..." }));
 app.use("/api", routes);
 
 export default app;
