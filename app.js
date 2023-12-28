@@ -33,17 +33,9 @@ app.use(cors());
 app.use("/meida", express.static(path.join(__dirname, "public/media")));
 
 /* Mongoose Setup */
-const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server running on http://localhost:${PORT}`)
-    )
-  )
-  .catch((error) =>
-    console.log(`Could not connect...\nError: ${error.message}`)
-  );
+
 
 /* Routes */
 app.use("/api", routes);
+
+export default app;
