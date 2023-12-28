@@ -25,7 +25,7 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("combined", { stream: accessLogStream }));
+app.use(morgan("combined"));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
