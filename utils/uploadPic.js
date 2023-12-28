@@ -6,7 +6,7 @@ import fs from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const destinationPath = path.join(__dirname, "../public/media");
+const destinationPath = path.join(__dirname, "../public/assets");
 
 if (!fs.existsSync(destinationPath)) {
   fs.mkdirSync(destinationPath, { recursive: true });
