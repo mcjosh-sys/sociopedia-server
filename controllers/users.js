@@ -21,8 +21,6 @@ export const getUserFriends = async (req, res) => {
 
     if (!user) return res.status(404).json("User does not exists!");
 
-    console.log({ friends: user.friends });
-
     const friends = await Promise.all(
       user.friends.map((id) => User.findById(id))
     );

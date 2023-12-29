@@ -6,7 +6,7 @@ import {
   likePost,
 } from "../controllers/posts.js";
 import { upload } from "../utils/uploadPic.js";
-import { verifyToken } from "../middleware/auth.js";
+import { verifyToken } from "../middlewares/auth.js";
 
 const router = express.Router();
 
