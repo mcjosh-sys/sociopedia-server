@@ -7,6 +7,8 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import routes from "./routes/index.js";
+import mongoose from "mongoose";
+import http from "http"
 
 /* Configurations */
 
@@ -30,9 +32,17 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* Routes */
+app.use("/api", routes);
 app
   .route("/")
   .get((req, res) => res.status(200).json({ success: "Server is up..." }));
-app.use("/api", routes);
 
-export default app;
+//const server = http.createServer(app)
+const PORT = process.env.PORT || 6001;
+const server = http.createServer(app)
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => server.listen(PORT,() => console.log(`Server is running on port: ${PORT}...`)))
+  .catch((error) =>
+    console.log(`Could not connect...\nError: ${error.message}`)
+  );

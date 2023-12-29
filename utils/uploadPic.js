@@ -14,9 +14,14 @@ if (!fs.existsSync(destinationPath)) {
 
 /* File Storage */
 const storage = multer.diskStorage({
-  destination: (req, file, cb) =>
-    cb(null, destinationPath),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
+  destination: (req, file, cb) => {
+    console.log({ file });
+    return cb(null, destinationPath);
+  },
+  filename: (req, file, cb) => {
+    console.log({req})
+    return cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 
 export const upload = multer({ storage: storage });
